@@ -10,6 +10,7 @@ package academia;
  * @author 31626351
  */
 public class Academia {
+    public num int = 2;
 
     /**
      * @param args the command line arguments

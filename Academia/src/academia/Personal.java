@@ -5,17 +5,17 @@
  */
 package academia;
 
-/**
- *
- * @author 31626351
- */
-public class Academia {
+public class Personal extends Pessoa{
+    private int crt;
+    private Agenda agenda;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public int getCrt() {
+        return crt;
+    }
+
+    public void setCrt(int crt) {
+        this.crt = crt;
     }
     
+  
 }

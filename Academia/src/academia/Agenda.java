@@ -7,15 +7,9 @@ package academia;
 
 /**
  *
- * @author 31626351
+ * @author Sr.Adulis
  */
-public class Academia {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+public class Agenda {
+    private Compromisso []compromisso;
     
 }

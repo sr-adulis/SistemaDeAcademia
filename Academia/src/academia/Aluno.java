@@ -7,15 +7,17 @@ package academia;
 
 /**
  *
- * @author 31626351
+ * @author Sr.Adulis
  */
-public class Academia {
+public class Aluno extends Pessoa {
+    private int CodId;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public int getCodId() {
+        return CodId;
+    }
+
+    public void setCodId(int CodId) {
+        this.CodId = CodId;
     }
     
 }

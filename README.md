@@ -10,3 +10,5 @@ Sistema para marcar aulas em academia
 |Thales Adulis   |3161138-9|
 |Victor Pereira  |3162635-1|
  
+ 
+ Diagrama de Classe : http://imgur.com/a/t6YAd

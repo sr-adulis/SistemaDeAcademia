@@ -14,14 +14,35 @@ public class Compromisso {
    private Date data;
    private int hora;
    private RegistroDaAula aula;
+   private static int quantidade;
+   private boolean Efetuado; 
 
     public Compromisso(Date data, int hora, RegistroDaAula aula) {
         this.data = data;
         this.hora = hora;
     }
-   
-   
+    
+   public void efetuaCompromisso(){
+       
+   }
 
+    public static int getQuantidade() {
+        return quantidade;
+    }
+
+    public static void setQuantidade(int quantidade) {
+        Compromisso.quantidade = quantidade;
+    }
+
+    public boolean isEfetuado() {
+        return Efetuado;
+    }
+
+    public void setEfetuado(boolean Efetuado) {
+        this.Efetuado = Efetuado;
+    }
+   
+  
     public Date getData() {
         return data;
     }

@@ -5,9 +5,11 @@
  */
 package academia;
 
+import java.util.Date;
+
 public class Personal extends Pessoa{
     private int crt;
-    private Compromisso []compromisso;
+    Compromisso []compromisso;
 
     public int getCrt() {
         return crt;
@@ -16,6 +18,17 @@ public class Personal extends Pessoa{
     public void setCrt(int crt) {
         this.crt = crt;
     }
-    
-  
+    public  boolean Disponibilidade(Date data,Personal personal){
+       int i = 0;
+       boolean ver=true;
+        while (Compromisso.getQuantidade()<= i){
+       if (this.compromisso[i].getData() == data) {
+           ver=false;
+           return false;  
+       }
+    i++;   
+   }
+        return true;
+    }
 }
+

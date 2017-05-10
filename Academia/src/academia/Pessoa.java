@@ -8,7 +8,7 @@ package academia;
 public abstract class Pessoa {
     private String nome;
     private int CPF;
-    
+    private int RG;
     public String getNome() {
         return nome;
     }

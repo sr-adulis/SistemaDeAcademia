@@ -8,7 +8,6 @@ package academia;
 public abstract class Pessoa {
     private String nome;
     private int CPF;
-    private Agenda agenda;
     
     public String getNome() {
         return nome;

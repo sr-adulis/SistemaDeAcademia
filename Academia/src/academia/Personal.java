@@ -7,7 +7,7 @@ package academia;
 
 public class Personal extends Pessoa{
     private int crt;
-    private Agenda agenda;
+    private Compromisso []compromisso;
 
     public int getCrt() {
         return crt;

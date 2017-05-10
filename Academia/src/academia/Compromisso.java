@@ -15,6 +15,13 @@ public class Compromisso {
    private int hora;
    private RegistroDaAula aula;
 
+    public Compromisso(Date data, int hora, RegistroDaAula aula) {
+        this.data = data;
+        this.hora = hora;
+    }
+   
+   
+
     public Date getData() {
         return data;
     }

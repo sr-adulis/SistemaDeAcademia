@@ -5,30 +5,38 @@
  * and open the template in the editor.
  */
 package academia;
+
 import java.util.Date;
+
 /**
  *
  * @author Sr.Adulis
  */
 public class Compromisso {
-   private Date data;
-   private int hora;
-   private int duração;
-   private String objetivo;
-   private String tipo;
-   private static int quantidade;
-   
-   private enum Status{agendado,confirmado,efetuado,cancelado};
-   private Status status;
+
+    private Date data;
+    private int hora;
+    private int duração;
+    private String objetivo;
+    private String tipo;
+    private static int quantidade;
+    private Aluno aluno;
+    
+    public enum Status {
+        agendado, confirmado, efetuado, cancelado
+    };
+    Status status;
 
     public Compromisso(Date data, int hora, int duração, String objetivo, String tipo, boolean confirmado) {
+        
+        this.aluno=aluno;
         this.data = data;
         this.hora = hora;
         this.duração = duração;
         this.objetivo = objetivo;
         this.tipo = tipo;
-        this.status = Status.agendado ;
-        
+        this.status = Status.agendado;
+
         Compromisso.quantidade++;
     }
 
@@ -39,12 +47,12 @@ public class Compromisso {
     public void setStatus(Status status) {
         this.status = status;
     }
-   
-    public void efetuaCompromisso(){
-      setStatus(Status.efetuado);
-      
-   }
-    
+
+    public void efetuaCompromisso() {
+        setStatus(Status.efetuado);
+
+    }
+
     public static int getQuantidade() {
         return quantidade;
     }
@@ -52,7 +60,7 @@ public class Compromisso {
     public static void setQuantidade(int quantidade) {
         Compromisso.quantidade = quantidade;
     }
-  
+
     public Date getData() {
         return data;
     }
@@ -69,9 +77,7 @@ public class Compromisso {
         this.hora = hora;
     }
 
-   
-   
-     public String getObjetivo() {
+    public String getObjetivo() {
         return objetivo;
     }
 

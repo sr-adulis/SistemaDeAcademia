@@ -13,19 +13,38 @@ import java.util.Date;
 public class Compromisso {
    private Date data;
    private int hora;
-   private RegistroDaAula aula;
+   private int duração;
+   private String objetivo;
+   private String tipo;
    private static int quantidade;
-   private boolean Efetuado; 
+   
+   private enum Status{agendado,confirmado,efetuado,cancelado};
+   private Status status;
 
-    public Compromisso(Date data, int hora, RegistroDaAula aula) {
+    public Compromisso(Date data, int hora, int duração, String objetivo, String tipo, boolean confirmado) {
         this.data = data;
         this.hora = hora;
+        this.duração = duração;
+        this.objetivo = objetivo;
+        this.tipo = tipo;
+        this.status = Status.agendado ;
+        
+        Compromisso.quantidade++;
     }
-    
-   public void efetuaCompromisso(){
-       
-   }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+   
+    public void efetuaCompromisso(){
+      setStatus(Status.efetuado);
+      
+   }
+    
     public static int getQuantidade() {
         return quantidade;
     }
@@ -33,15 +52,6 @@ public class Compromisso {
     public static void setQuantidade(int quantidade) {
         Compromisso.quantidade = quantidade;
     }
-
-    public boolean isEfetuado() {
-        return Efetuado;
-    }
-
-    public void setEfetuado(boolean Efetuado) {
-        this.Efetuado = Efetuado;
-    }
-   
   
     public Date getData() {
         return data;
@@ -59,12 +69,13 @@ public class Compromisso {
         this.hora = hora;
     }
 
-    public boolean isConfirmado() {
-        return confirmado;
+   
+   
+     public String getObjetivo() {
+        return objetivo;
     }
 
-    public void setConfirmado(boolean confirmado) {
-        this.confirmado = confirmado;
+    public void setObjetivo(String objetivo) {
+        this.objetivo = objetivo;
     }
-   private boolean confirmado;
 }

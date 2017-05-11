@@ -9,6 +9,7 @@ import java.util.Date;
 
 public class Personal extends Pessoa{
     private int crt;
+    private static int quantiddade;
     Compromisso []compromisso;
 
     public int getCrt() {
@@ -22,11 +23,11 @@ public class Personal extends Pessoa{
        int i = 0;
        boolean ver=true;
         while (Compromisso.getQuantidade()<= i){
-       if (this.compromisso[i].getData() == data) {
-           ver=false;
-           return false;  
+            if ((this.compromisso[i].getData() == data) && (this.compromisso[i].status== Compromisso.Status.agendado ||
+                    this.compromisso[i].status==Compromisso.Status.confirmado )) {
+                return false;  
        }
-    i++;   
+        i++;   
    }
         return true;
     }

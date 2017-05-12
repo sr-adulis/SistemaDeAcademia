@@ -9,13 +9,15 @@ import java.util.Date;
 
 public class Personal extends Pessoa{
     private int crt;
-
+    private int cod;
     private static int quantidade;
-
-    private static int quantiddade;
-
     Compromisso []compromisso;
 
+    public Personal(int crt, int cod, Compromisso[] compromisso) {
+        this.crt = crt;
+        this.cod = cod;
+        this.compromisso = compromisso;
+    }    
     public int getCrt() {
         return crt;
     }
@@ -28,9 +30,18 @@ public class Personal extends Pessoa{
         return compromisso;
     }
 
-    public void setCompromisso(Compromisso[] compromisso) {
-        this.compromisso = compromisso;
+    public void setCompromisso(Compromisso compromisso) {
+        this.compromisso[Compromisso.getQuantidade()] = compromisso;
     }
+    
+    
+    public  boolean MarcarCompromisso(Aluno aluno,Date data, String objetivo, String tipo,int codPersonal){
+        Compromisso compromisso=new Compromisso(aluno,data,objetivo,tipo);
+        this.setCompromisso(compromisso);
+        return true;
+    }
+
+
     public  boolean Disponibilidade(Date data){
        int i = 0;
 

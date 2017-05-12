@@ -13,33 +13,33 @@ import java.util.Date;
  * @author Sr.Adulis
  */
 public class Compromisso {
-
+    
+    private Aluno aluno;
+    private int cod;
     private Date data;
-    private int hora;
-    private int duração;
     private String objetivo;
     private String tipo;
     private static int quantidade;
-    private Aluno aluno;
+    
     
     public enum Status {
         agendado, confirmado, efetuado, cancelado
     };
     Status status;
 
-    public Compromisso(Aluno aluno,Date data, int hora, int duração, String objetivo, String tipo, boolean confirmado) {
+    public Compromisso(Aluno aluno,Date data, String objetivo, String tipo) {
         
         this.aluno=aluno;
         this.data = data;
-        this.hora = hora;
-        this.duração = duração;
         this.objetivo = objetivo;
         this.tipo = tipo;
         this.status = Status.agendado;
-
+        
+        this.cod=Compromisso.quantidade;
         Compromisso.quantidade++;
     }
-
+    
+    
     public Status getStatus() {
         return status;
     }
@@ -69,14 +69,7 @@ public class Compromisso {
         this.data = data;
     }
 
-    public int getHora() {
-        return hora;
-    }
-
-    public void setHora(int hora) {
-        this.hora = hora;
-    }
-
+   
     public String getObjetivo() {
         return objetivo;
     }

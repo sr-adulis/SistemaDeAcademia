@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public class Compromisso {
     
-    private Aluno aluno;
+    private String aluno;
     private int cod;
     private Date data;
     private String objetivo;
@@ -27,7 +27,7 @@ public class Compromisso {
     };
     Status status;
 
-    public Compromisso(Aluno aluno,Date data, String objetivo, String tipo) {
+    public Compromisso(String aluno,Date data, String objetivo, String tipo) {
         
         this.aluno=aluno;
         this.data = data;

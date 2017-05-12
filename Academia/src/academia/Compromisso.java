@@ -27,7 +27,7 @@ public class Compromisso {
     };
     Status status;
 
-    public Compromisso(Date data, int hora, int duração, String objetivo, String tipo, boolean confirmado) {
+    public Compromisso(Aluno aluno,Date data, int hora, int duração, String objetivo, String tipo, boolean confirmado) {
         
         this.aluno=aluno;
         this.data = data;

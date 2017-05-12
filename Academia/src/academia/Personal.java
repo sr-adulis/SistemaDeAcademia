@@ -5,7 +5,15 @@
  */
 package academia;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Date;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class Personal {
 
@@ -107,4 +115,27 @@ public class Personal {
         }
         return ver;
     }
+     
+     public static void main(String[] args) throws IOException {
+ 
+     File arquivo = new File("E:\\SistemaDeAcademia\\Academia\\src\\academia\\personais.txt");
+     File[] arquivos = arquivo.listFiles();
+     FileWriter fw = new FileWriter(arquivo,true);
+     BufferedWriter bw = new BufferedWriter(fw);
+     bw.write("Nome Personais:");
+     bw.newLine();
+     bw.close();
+     fw.close();
+     
+     //Ler o Arquivo
+     FileReader fr = new FileReader(arquivo);
+     BufferedReader br = new BufferedReader(fr);
+     while (br.ready()){
+         String linha = br.readLine();
+         System.out.println(linha);
+         br.close();
+         fr.close();
+         
+     }
+     }
 }

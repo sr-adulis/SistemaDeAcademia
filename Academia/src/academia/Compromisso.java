@@ -38,11 +38,23 @@ public class Compromisso {
         this.cod=Compromisso.quantidade;
         Compromisso.quantidade++;
     }
+
+    public String getAluno() {
+        return aluno;
+    }
+
+    public int getCod() {
+        return cod;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
     
     
     public Status getStatus() {
         return status;
-    }
+    } 
 
     public void setStatus(Status status) {
         this.status = status;

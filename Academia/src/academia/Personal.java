@@ -81,7 +81,27 @@ public class Personal {
         this.setCompromisso(compromisso);
         return true;
     }
-
+    public String printCompromisso(){
+        int i=0;
+        String resultado= "Nº compromisso: "+i+ "Tipo: "+ this.compromisso[i].getTipo()+"objetivo"
+                    +this.compromisso[i].getObjetivo()+"\n \tNome do aluno:"+this.compromisso[i].getAluno()+
+                    "Data:"+this.compromisso[i].getData()+ " Status:"+this.compromisso[i].getStatus()+"\t \t";
+        i++;
+        if (Compromisso.getQuantidade()>i){
+            return resultado+printCompromisso(i);
+        }
+        return resultado;
+    }
+    public String printCompromisso(int i){
+        String resultado= "Nº compromisso: "+i+ "Tipo: "+ this.compromisso[i].getTipo()+"objetivo"
+                    +this.compromisso[i].getObjetivo()+"\n \tNome do aluno:"+this.compromisso[i].getAluno()+
+                    "Data:"+this.compromisso[i].getData()+ " Status:"+this.compromisso[i].getStatus()+"\t \t";
+        i++;
+        if (Compromisso.getQuantidade()>i){
+            return resultado+printCompromisso(i);
+        }
+        return resultado;
+    }
     public boolean Disponibilidade(Date data) {
         int i = 0;
 

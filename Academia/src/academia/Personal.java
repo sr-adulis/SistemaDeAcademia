@@ -29,7 +29,6 @@ public class Personal {
         this.crt = crt;
         this.cod = cod;
         this.compromisso = compromisso;
-
         this.cod = Personal.quantidade;
         Personal.quantidade++;
     }

@@ -25,10 +25,10 @@ public class Personal {
     private static int quantidade;
     Compromisso[] compromisso;
 
-    public Personal(int crt, int cod, Compromisso[] compromisso) {
+    public Personal(int crt) {
         this.crt = crt;
         this.cod = cod;
-        this.compromisso = compromisso;
+       
         this.cod = Personal.quantidade;
         Personal.quantidade++;
     }
@@ -72,18 +72,23 @@ public class Personal {
     public void setCompromisso(Compromisso compromisso) {
         this.compromisso[Compromisso.getQuantidade()] = compromisso;
     }
-
-    
-
     public boolean MarcarCompromisso(String aluno, Date data, String objetivo, String tipo, int codPersonal) {
         Compromisso compromisso = new Compromisso(aluno, data, objetivo, tipo);
         this.setCompromisso(compromisso);
         return true;
     }
+    public String selecionarCompromisso(int i) {
+        String resultado= "Nº compromisso: "+i+ "Tipo: "+ this.compromisso[i].getTipo()+"objetivo"
+                    +this.compromisso[i].getObjetivo()+"\n \tNome do aluno:"+this.compromisso[i].getAluno()+
+                    "Data:"+this.compromisso[i].getData()+ " Status:"+this.compromisso[i].getStatus()+"\t \t";
+                return resultado;
+    } 
+    
+   
     public String printCompromisso(){
         int i=0;
         String resultado= "Nº compromisso: "+i+ "Tipo: "+ this.compromisso[i].getTipo()+"objetivo"
-                    +this.compromisso[i].getObjetivo()+"\n \tNome do aluno:"+this.compromisso[i].getAluno()+
+                    +this.compromisso[i].getObjetivo()+"\n \t Nome do aluno:"+this.compromisso[i].getAluno()+
                     "Data:"+this.compromisso[i].getData()+ " Status:"+this.compromisso[i].getStatus()+"\t \t";
         i++;
         if (Compromisso.getQuantidade()>i){

@@ -25,13 +25,14 @@ public class Personal {
     private static int quantidade;
     Compromisso[] compromisso;
 
-    public Personal(int crt) {
+    public Personal(String nome,int crt) {
+        this.nome=nome;
         this.crt = crt;
-        this.cod = cod;
        
         this.cod = Personal.quantidade;
-        Personal.quantidade++;
+        
     }
+    
     public String getNome() {
         return nome;
     }

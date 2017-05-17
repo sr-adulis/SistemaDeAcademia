@@ -32,6 +32,11 @@ public class Personal {
         this.cod = Personal.quantidade;
         
     }
+
+    @Override
+    public String toString() {
+        return "Personal{" + "nome=" + nome + ", CPF=" + CPF + ", crt=" + crt + ", cod=" + cod+'}';
+    }
     
     public String getNome() {
         return nome;

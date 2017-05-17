@@ -22,54 +22,56 @@ public class Controlador {
     public static void setPersonal(Personal personal) {
         Controlador.personal[Personal.getQuantidade()] = personal;
     }
-    
 
     public static void menuPrincipal() {
         Scanner in = new Scanner(System.in);
         String menuP;
         System.out.println("Projeto agendamento de academia Windows academic");
-        System.out.println("\n MENU PRINCIPAL"/*Mostra Todos + opções:selecionar(remover/alterar/adicionar/adicionarCompromisso)*/
+        System.out.println("\n MENU PRINCIPAL"
                 + "\n 1- Lista de Personal treiners "
                 + "\n 2- Adicionbar novo personal"
-                + "\n 3- Selecionar Personal"
+                + "\n 3- Selecionar Personal"/*Mostra Todos + opções:selecionar(remover/alterar/adicionar/adicionarCompromisso*/
                 + "\n 2- Buscar Personais disponiveis por data"/*Mostra somente os disponiveis + opções : selecionar(adicionar compromisso)*/
                 + "");
         System.out.println("Enter com a opção desejada");
         menuP = in.nextLine();
         switch (menuP) {
-            
+
             case ("1"):
                 System.out.println(printListaPersonal());
-            case("2"): 
+                in.nextLine();
+                break;
+            case ("2"):
                 addPersonal();
-            case("3"):
-                
+                in.nextLine();
+                break;
+            case ("3"):
+
         }
-        if( !menuP.equals("0")){
-        menuPrincipal();
+        if (!menuP.equals("0")) {
+            menuPrincipal();
         }
     }
 
     public static void addPersonal() {
-        if (Personal.getQuantidade()<=5){
-            
-        System.out.println("Opção adicionar personal selecionada");
-        Scanner in = new Scanner(System.in);
-        
-        System.out.println("digite o nome do pesonal");
-        String nome = in.nextLine();
-        
-        System.out.println("digite o numero do crt");
-        int crt = in.nextInt();
-        
-        Personal personal= new Personal(nome,crt);
-        Controlador.setPersonal(personal);
-        
-        Personal.setQuantidade(Personal.getQuantidade()+1);
-            System.out.println("Personal:"+nome+" ADICIONADO COM SUSSESSO");
-            
-        }
-        else{
+        if (Personal.getQuantidade() <= 5) {
+
+            System.out.println("Opção adicionar personal selecionada");
+            Scanner in = new Scanner(System.in);
+
+            System.out.println("digite o nome do pesonal");
+            String nome = in.nextLine();
+
+            System.out.println("digite o numero do crt");
+            int crt = in.nextInt();
+
+            Personal personal = new Personal(nome, crt);
+            Controlador.setPersonal(personal);
+
+            Personal.setQuantidade(Personal.getQuantidade() + 1);
+            System.out.println("Personal:" + nome + " ADICIONADO COM SUSSESSO");
+
+        } else {
             System.out.println("Não ha espaço para adição de personal"
                     + "\n SUGESTÃO: DELÇÃO");
         }
@@ -78,7 +80,7 @@ public class Controlador {
     public static String printListaPersonal() {
         if (Personal.getQuantidade() > 0) {
             int i = 0;
-            String resultado = "\n\n\n Nº do personal: " + i + "nome: " + personal[i].getNome() + "\n";
+            String resultado = "\n Nº do personal: " + i + "\t \tnome: " + personal[i].getNome() + "\n";
             i++;
             if (Personal.getQuantidade() > i) {
                 return resultado + printListaPersonal(i);
@@ -90,11 +92,29 @@ public class Controlador {
 
     public static String printListaPersonal(int i) {
 
-        String resultado = "Nº do personal: " + i + "nome: " + personal[i].getNome();
+        String resultado = "Nº do personal: " + i + "nome: " + personal[i].getNome() + "\n";
         i++;
         if (Personal.getQuantidade() > i) {
             return resultado + printListaPersonal(i);
         }
         return resultado;
     }
+
+    public static void selPersonal() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Opção selecionar personal");
+        int sel = 6;
+        while (!((sel >= 0) && (sel <= 5))) {
+
+            System.out.println("\n Digite o indice correspondente do personal");
+            sel = in.nextInt();
+        }
+
+        System.out.println(personal[sel]);
+        
+        
+
+    
+
+}
 }

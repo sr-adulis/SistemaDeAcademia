@@ -13,15 +13,14 @@ import java.util.Scanner;
  */
 public class Controlador {
 
-    static Personal[] personal = new Personal[5];
-
-    public static Personal[] getPersonal() {
-        return personal;
+       /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Controlador.menuPrincipal();
+      
     }
 
-    public static void setPersonal(Personal personal) {
-        Controlador.personal[Personal.getQuantidade()] = personal;
-    }
 
     public static void menuPrincipal() {
         Scanner in = new Scanner(System.in);
@@ -66,7 +65,7 @@ public class Controlador {
             int crt = in.nextInt();
 
             Personal personal = new Personal(nome, crt);
-            Controlador.setPersonal(personal);
+            Academia.setPersonal(personal);
 
             Personal.setQuantidade(Personal.getQuantidade() + 1);
             System.out.println("Personal:" + nome + " ADICIONADO COM SUSSESSO");
@@ -80,7 +79,7 @@ public class Controlador {
     public static String printListaPersonal() {
         if (Personal.getQuantidade() > 0) {
             int i = 0;
-            String resultado = "\n Nº do personal: " + i + "\t \tnome: " + personal[i].getNome() + "\n";
+            String resultado = "\n Nº do personal: " + i + "\t \tnome: " + Academia.personal.get(i).getNome() + "\n";
             i++;
             if (Personal.getQuantidade() > i) {
                 return resultado + printListaPersonal(i);
@@ -92,7 +91,7 @@ public class Controlador {
 
     public static String printListaPersonal(int i) {
 
-        String resultado = "Nº do personal: " + i + "nome: " + personal[i].getNome() + "\n";
+        String resultado = "Nº do personal: " + i + "nome: " + Academia.personal.get(i).getNome() + "\n";
         i++;
         if (Personal.getQuantidade() > i) {
             return resultado + printListaPersonal(i);
@@ -110,7 +109,7 @@ public class Controlador {
             sel = in.nextInt();
         }
 
-        System.out.println(personal[sel]);
+        System.out.println(Academia.personal.get(sel));
         
         
 

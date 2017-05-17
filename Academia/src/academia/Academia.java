@@ -10,14 +10,26 @@ package academia;
  *
  * @author 31626351
  */
+import java.util.ArrayList;
+
 public class Academia {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        Controlador.menuPrincipal();
-      
+ 
+    static ArrayList<Personal> personal = new ArrayList<Personal>();
+    
+    
+    public static Personal[] getPersonal() {
+        Personal[] arr = new Personal[personal.size()];
+        return personal.toArray(arr);
     }
+
+    public static void setPersonal(Personal personal) {
+        Academia.personal.add(personal);
+    }
+    public static void delPersonal(int i){
+        Academia.personal.remove(i);
+        
+    }
+    
     
 }

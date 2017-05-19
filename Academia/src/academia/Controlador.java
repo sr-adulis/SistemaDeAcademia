@@ -53,6 +53,40 @@ public class Controlador {
             menuPrincipal();
         }
     }
+     public static void menuSelPersonal(int sel){
+        Scanner in = new Scanner(System.in);
+        String menuP;       
+        System.out.println("Personal \""+sel+"\" selecionado :"+Academia.personal.get(sel).getNome()+"\n Digite a opção desejada"
+                + "\n \t 0- MENU INICIAL"
+                + "\n \t 1- Mostrar informações do personal"
+                + "\n \t 2- alterar dados do personal"
+                + "\n \t 3- Mostrar compromissos"
+                + "\n \t 4- Adicionar compromisso"
+                + "\n \t 5- Selecionar compromisso");
+         System.out.println("Enter com a o"
+                + "pção desejada");
+        menuP = in.nextLine();
+        switch (menuP) {
+
+            case ("1"):
+                System.out.println(Academia.personal.get(sel));
+
+                break;
+            case ("2"):
+                addPersonal();
+
+                break;
+            case ("3"):
+                Controlador.selPersonal();
+                break;
+        }
+        in.nextLine();
+        if (!menuP.equals("0")) {
+            menuSelPersonal(sel);
+        }
+        
+        
+    }
 
     public static void addPersonal() {
         if (Academia.getQuantidadePersonal() <= 5) {
@@ -112,12 +146,11 @@ public class Controlador {
             sel = in.nextInt();
         }
         if (sel<=Academia.getQuantidadePersonal()) {
-            System.out.println(Academia.personal.get(sel));
-
+            Controlador.menuSelPersonal(sel);
         } else {
             System.out.print(" \""+sel + "\"3 não é uma opção valida");
         
         }
 
     }
-}
+}  

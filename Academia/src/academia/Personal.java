@@ -22,16 +22,25 @@ public class Personal {
     private int crt;
 
     private boolean ver = false;
-    private  int quantidadeCompromisso;
+    private int quantidadeCompromisso;
     Compromisso[] compromisso = new Compromisso[5];
-    
+
+    public Personal(String nome, int crt) {
+        this.nome = nome;
+        this.crt = crt;
+        this.ver = true;
+        this.cod = Academia.getQuantidadePersonal();
+
+    }
+
     public int getQuantidadeCompromisso() {
         return quantidadeCompromisso;
     }
 
-    public  void setQuantidadeCompromisso(int quantidadeCompromisso) {
+    public void setQuantidadeCompromisso(int quantidadeCompromisso) {
         this.quantidadeCompromisso = quantidadeCompromisso;
     }
+
     public boolean isVer() {
         return ver;
     }
@@ -40,31 +49,19 @@ public class Personal {
         this.ver = ver;
     }
     private int cod;
-    
-
-    public Personal(String nome, int crt) {
-        this.nome = nome;
-        this.crt = crt;
-
-        this.cod = Academia.getQuantidadePersonal();
-
-    }
 
     @Override
     public String toString() {
-        if (this.ver) {
 
+        if (this != null) {
             String resultado = "Ficha do Personal{ \n \t" + "nome=" + this.nome + ", CPF=" + this.CPF + ", crt=" + this.crt + ", cod=" + this.cod + '}';
-            if(this.getQuantidadeCompromisso()!=0){
-            int i=0;
-            while (this.getQuantidadeCompromisso()>=i) {
-                System.out.println(this.compromisso[i]);
-                i++;
+            if (this.getQuantidadeCompromisso() != 0) {
+                this.printCompromisso();
             }
             return resultado;
-            }
         }
         return null;
+
     }
 
     public String getNome() {
@@ -83,7 +80,6 @@ public class Personal {
         this.CPF = CPF;
     }
 
-  
     public int getCrt() {
         return crt;
     }
@@ -101,7 +97,7 @@ public class Personal {
     }
 
     public boolean MarcarCompromisso(String aluno, Date data, String objetivo, String tipo, int codPersonal) {
-        Compromisso compromisso = new Compromisso(aluno, data, objetivo, tipo,this.getQuantidadeCompromisso());
+        Compromisso compromisso = new Compromisso(aluno, data, objetivo, tipo, this.getQuantidadeCompromisso());
         this.setCompromisso(compromisso);
         return true;
     }
@@ -157,8 +153,6 @@ public class Personal {
         while (Academia.getQuantidadePersonal() >= j) {
             int i = 0;
             ver[j] = true;
-            
-            
 
             while (personal[j].getQuantidadeCompromisso() >= i) {
                 if ((personal[j].compromisso[i].getData() == data) && (personal[j].compromisso[i].status == Compromisso.Status.agendado

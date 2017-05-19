@@ -13,14 +13,13 @@ import java.util.Scanner;
  */
 public class Controlador {
 
-       /**
+    /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         Controlador.menuPrincipal();
-      
-    }
 
+    }
 
     public static void menuPrincipal() {
         Scanner in = new Scanner(System.in);
@@ -39,11 +38,11 @@ public class Controlador {
 
             case ("1"):
                 System.out.println(printListaPersonal());
-                
+
                 break;
             case ("2"):
                 addPersonal();
-                
+
                 break;
             case ("3"):
                 Controlador.selPersonal();
@@ -82,7 +81,8 @@ public class Controlador {
     public static String printListaPersonal() {
         if (Academia.getQuantidadePersonal() > 0) {
             int i = 0;
-            String resultado = "\n Nº do personal: " + i + "\t \tnome: " + Academia.personal.get(i).getNome() + "\n";
+            String resultado = "Opção print Personal treiners selecionada:"
+                    + "\n \t Nº do personal: " + i + "\t \tnome: " + Academia.personal.get(i).getNome() + "\n";
             i++;
             if (Academia.getQuantidadePersonal() > i) {
                 return resultado + printListaPersonal(i);
@@ -107,18 +107,17 @@ public class Controlador {
         System.out.println("Opção selecionar personal");
         int sel = 6;
         while (!((sel >= 0) && (sel <= 5))) {
-            
+
             System.out.println("\n Digite o indice correspondente do personal");
             sel = in.nextInt();
         }
-        if(Academia.personal.get(sel)!=null){
-        System.out.println(Academia.personal.get(sel));
+        if (sel<=Academia.getQuantidadePersonal()) {
+            System.out.println(Academia.personal.get(sel));
+
+        } else {
+            System.out.print(" \""+sel + "\"3 não é uma opção valida");
         
         }
-        else{
-        System.out.print(sel+"não é uma opção valida");
-        }
-    
 
-}
+    }
 }

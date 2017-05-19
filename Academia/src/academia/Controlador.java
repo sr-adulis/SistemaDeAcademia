@@ -30,30 +30,33 @@ public class Controlador {
                 + "\n 1- Lista de Personal treiners "
                 + "\n 2- Adicionbar novo personal"
                 + "\n 3- Selecionar Personal"/*Mostra Todos + opções:selecionar(remover/alterar/adicionar/adicionarCompromisso*/
-                + "\n 2- Buscar Personais disponiveis por data"/*Mostra somente os disponiveis + opções : selecionar(adicionar compromisso)*/
+                + "\n 4- Buscar Personais disponiveis por data"/*Mostra somente os disponiveis + opções : selecionar(adicionar compromisso)*/
                 + "");
-        System.out.println("Enter com a opção desejada");
+        System.out.println("Enter com a o"
+                + "pção desejada");
         menuP = in.nextLine();
         switch (menuP) {
 
             case ("1"):
                 System.out.println(printListaPersonal());
-                in.nextLine();
+                
                 break;
             case ("2"):
                 addPersonal();
-                in.nextLine();
+                
                 break;
             case ("3"):
-
+                Controlador.selPersonal();
+                break;
         }
+        in.nextLine();
         if (!menuP.equals("0")) {
             menuPrincipal();
         }
     }
 
     public static void addPersonal() {
-        if (Personal.getQuantidade() <= 5) {
+        if (Academia.getQuantidadePersonal() <= 5) {
 
             System.out.println("Opção adicionar personal selecionada");
             Scanner in = new Scanner(System.in);
@@ -67,7 +70,7 @@ public class Controlador {
             Personal personal = new Personal(nome, crt);
             Academia.setPersonal(personal);
 
-            Personal.setQuantidade(Personal.getQuantidade() + 1);
+            Academia.setQuantidadePersonal(Academia.getQuantidadePersonal() + 1);
             System.out.println("Personal:" + nome + " ADICIONADO COM SUSSESSO");
 
         } else {
@@ -77,11 +80,11 @@ public class Controlador {
     }
 
     public static String printListaPersonal() {
-        if (Personal.getQuantidade() > 0) {
+        if (Academia.getQuantidadePersonal() > 0) {
             int i = 0;
             String resultado = "\n Nº do personal: " + i + "\t \tnome: " + Academia.personal.get(i).getNome() + "\n";
             i++;
-            if (Personal.getQuantidade() > i) {
+            if (Academia.getQuantidadePersonal() > i) {
                 return resultado + printListaPersonal(i);
             }
             return resultado;
@@ -93,7 +96,7 @@ public class Controlador {
 
         String resultado = "Nº do personal: " + i + "nome: " + Academia.personal.get(i).getNome() + "\n";
         i++;
-        if (Personal.getQuantidade() > i) {
+        if (Academia.getQuantidadePersonal() > i) {
             return resultado + printListaPersonal(i);
         }
         return resultado;
@@ -104,15 +107,17 @@ public class Controlador {
         System.out.println("Opção selecionar personal");
         int sel = 6;
         while (!((sel >= 0) && (sel <= 5))) {
-
+            
             System.out.println("\n Digite o indice correspondente do personal");
             sel = in.nextInt();
         }
-
+        if(Academia.personal.get(sel)!=null){
         System.out.println(Academia.personal.get(sel));
         
-        
-
+        }
+        else{
+        System.out.print(sel+"não é uma opção valida");
+        }
     
 
 }

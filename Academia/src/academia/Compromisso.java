@@ -19,7 +19,6 @@ public class Compromisso {
     private Date data;
     private String objetivo;
     private String tipo;
-    private static int quantidade;
     
     
     public enum Status {
@@ -27,7 +26,7 @@ public class Compromisso {
     };
     Status status;
 
-    public Compromisso(String aluno,Date data, String objetivo, String tipo) {
+    public Compromisso(String aluno,Date data, String objetivo, String tipo,int cod) {
         
         this.aluno=aluno;
         this.data = data;
@@ -35,8 +34,8 @@ public class Compromisso {
         this.tipo = tipo;
         this.status = Status.agendado;
         
-        this.cod=Compromisso.quantidade;
-        Compromisso.quantidade++;
+        this.cod=cod;
+        
     }
 
     public String getAluno() {
@@ -65,13 +64,6 @@ public class Compromisso {
 
     }
 
-    public static int getQuantidade() {
-        return quantidade;
-    }
-
-    public static void setQuantidade(int quantidade) {
-        Compromisso.quantidade = quantidade;
-    }
 
     public Date getData() {
         return data;

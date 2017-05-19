@@ -16,7 +16,7 @@ public class Academia {
 
  
     static ArrayList<Personal> personal = new ArrayList<Personal>();
-    
+    static int quantidadePersonal;
     
     public static Personal[] getPersonal() {
         Personal[] arr = new Personal[personal.size()];
@@ -29,6 +29,14 @@ public class Academia {
     public static void delPersonal(int i){
         Academia.personal.remove(i);
         
+    }
+
+    public static void setQuantidadePersonal(int quantidadePersonal) {
+        Academia.quantidadePersonal = quantidadePersonal;
+    }
+
+    public static int getQuantidadePersonal() {
+        return quantidadePersonal;
     }
     
     

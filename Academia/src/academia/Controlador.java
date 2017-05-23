@@ -73,7 +73,7 @@ public class Controlador {
 
                 break;
             case ("2"):
-                addPersonal();
+                alterarPersonal(sel);
 
                 break;
             case ("3"):
@@ -152,5 +152,78 @@ public class Controlador {
         
         }
 
+    }
+    public static void alterarPersonal(int sel){
+        Scanner in = new Scanner(System.in);
+        String menuP; 
+        System.out.println("Opção alternar personal");
+        
+        System.out.println("Personal \""+sel+"\" selecionado para alterações :"+Academia.personal.get(sel).getNome()+"\n Digite a opção desejada"
+                + "\n \t 0- MENU SELECIONAR PERSONAL "
+                + "\n \t 1- alterar nome:"+Academia.personal.get(sel).getNome()
+                + "\n \t 2- alterar CPF:"+Academia.personal.get(sel).getCPF()
+                + "\n \t 3- alterar CRT:"+Academia.personal.get(sel).getCrt()
+                + "\n \t 4- EXCLUIR PERSONAL");
+         System.out.println("Enter com a o"
+                + "pção desejada");
+        menuP = in.nextLine();
+        switch (menuP) {
+
+            case ("1"):
+                System.out.println(Academia.personal.get(sel));
+
+                break;
+            case ("2"):
+                alterarPersonal(sel);
+
+                break;
+            case ("3"):
+                Controlador.selPersonal();
+                break;
+        }
+        in.nextLine();
+        if (!menuP.equals("0")) {
+            menuSelPersonal(sel);
+        }
+
+    }
+    public  void alterarAtributo(int sel,String atributo){
+        Scanner in = new Scanner(System.in);
+        String input; 
+        String valor="";
+        switch (atributo) {
+
+            case ("nome"):
+                valor=Academia.personal.get(sel).getNome();
+
+                break;
+            case ("cpf"):
+                valor=String.valueOf(Academia.personal.get(sel).getCPF());
+
+                break;
+            case ("crt"):
+                valor=String.valueOf(Academia.personal.get(sel).getCrt());
+                break;
+        }
+        
+        System.out.println("Altarando atributo"+atributo+":"+valor+" digite o novo"+atributo);
+        input=in.nextLine();
+        System.out.print("para confirmar as alterações, digite o"+atributo+" antigo:"+valor);
+        if(in.nextLine()==valor){
+            switch (atributo) {
+
+            case ("nome"):
+                Academia.personal.get(sel).setNome(input);
+
+                break;
+            case ("cpf"):
+                Academia.personal.get(sel).setCPF(Integer.parseInt(input));
+
+                break;
+            case ("crt"):
+                Academia.personal.get(sel).setCrt(Integer.parseInt(input));
+                break;
+        }
+        }
     }
 }  

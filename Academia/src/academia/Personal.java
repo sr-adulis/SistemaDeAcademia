@@ -32,7 +32,7 @@ public class Personal {
         this.cod = Academia.getQuantidadePersonal();
 
     }
-
+    
     public int getQuantidadeCompromisso() {
         return quantidadeCompromisso;
     }

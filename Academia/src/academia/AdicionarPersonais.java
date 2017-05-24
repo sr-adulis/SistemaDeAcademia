@@ -5,18 +5,20 @@
  */
 package academia;
 
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author victo
  */
-public class TabelaPersonais extends javax.swing.JFrame {
+public class AdicionarPersonais extends javax.swing.JFrame {
 
     /**
      * Creates new form TabelaPersonais
      */
-    public TabelaPersonais() {
+    public AdicionarPersonais() {
         initComponents();
     }
 
@@ -42,8 +44,6 @@ public class TabelaPersonais extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         mensagem = new javax.swing.JLabel();
         del = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tabelaPersonais.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -227,24 +227,58 @@ public class TabelaPersonais extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TabelaPersonais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdicionarPersonais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TabelaPersonais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdicionarPersonais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TabelaPersonais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdicionarPersonais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TabelaPersonais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdicionarPersonais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TabelaPersonais().setVisible(true);
+                new AdicionarPersonais().setVisible(true);
             }
         });
     }
 
+    public JTextField getCpfPersonal() {
+        return cpfPersonal;
+    }
+
+    public void setCpfPersonal(JTextField cpfPersonal) {
+        this.cpfPersonal = cpfPersonal;
+    }
+
+    public JTextField getCrtPersonal() {
+        return crtPersonal;
+    }
+
+    public void setCrtPersonal(JTextField crtPersonal) {
+        this.crtPersonal = crtPersonal;
+    }
+
+    public JTextField getNomePersonal() {
+        return nomePersonal;
+    }
+
+    public void setNomePersonal(JTextField nomePersonal) {
+        this.nomePersonal = nomePersonal;
+    }
+
+    public JTable getTabelaPersonais() {
+        return tabelaPersonais;
+    }
+
+    public void setTabelaPersonais(JTable tabelaPersonais) {
+        this.tabelaPersonais = tabelaPersonais;
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
     private javax.swing.JTextField cpfPersonal;

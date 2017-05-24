@@ -64,7 +64,7 @@ public class Controlador {
                 + "\n \t 3- Mostrar compromissos"
                 + "\n \t 4- Adicionar compromisso"
                 + "\n \t 5- Selecionar compromisso");
-        System.out.println("Enter com a opção desejada");
+        System.out.println("Entre com a opção desejada");
         menuP = in.nextLine();
         switch (menuP) {
 
@@ -140,27 +140,11 @@ public class Controlador {
 
     }
     public static void addPersonal() {
-        if (Academia.getQuantidadePersonal() <= 5) {
-
-            System.out.println("Opção adicionar personal selecionada");
-            Scanner in = new Scanner(System.in);
-
-            System.out.println("digite o nome do pesonal");
-            String nome = in.nextLine();
-
-            System.out.println("digite o numero do crt");
-            int crt = in.nextInt();
-
-            Personal personal = new Personal(nome, crt);
-            Academia.setPersonal(personal);
-
-            Academia.setQuantidadePersonal(Academia.getQuantidadePersonal() + 1);
-            System.out.println("Personal:" + nome + " ADICIONADO COM SUSSESSO");
-
-        } else {
-            System.out.println("Não ha espaço para adição de personal"
-                    + "\n SUGESTÃO: DELÇÃO");
-        }
+        AdicionarPersonais tabela = new AdicionarPersonais();
+        tabela.setVisible(true);
+        
+        
+        
     }
     
 

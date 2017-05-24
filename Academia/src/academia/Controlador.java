@@ -53,18 +53,18 @@ public class Controlador {
             menuPrincipal();
         }
     }
-     public static void menuSelPersonal(int sel){
+
+    public static void menuSelPersonal(int sel) {
         Scanner in = new Scanner(System.in);
-        String menuP;       
-        System.out.println("Personal \""+sel+"\" selecionado :"+Academia.personal.get(sel).getNome()+"\n Digite a opção desejada"
+        String menuP;
+        System.out.println("Personal \"" + sel + "\" selecionado :" + Academia.personal.get(sel).getNome() + "\n Digite a opção desejada"
                 + "\n \t 0- MENU INICIAL"
                 + "\n \t 1- Mostrar informações do personal"
                 + "\n \t 2- alterar dados do personal"
                 + "\n \t 3- Mostrar compromissos"
                 + "\n \t 4- Adicionar compromisso"
                 + "\n \t 5- Selecionar compromisso");
-         System.out.println("Enter com a o"
-                + "pção desejada");
+        System.out.println("Enter com a opção desejada");
         menuP = in.nextLine();
         switch (menuP) {
 
@@ -73,21 +73,72 @@ public class Controlador {
 
                 break;
             case ("2"):
-                alterarPersonal(sel);
+                menuAlterarPersonal(sel);
 
                 break;
             case ("3"):
-                Controlador.selPersonal();
+                Academia.personal.get(sel).printCompromisso();
+                break;
+            case ("4"):
                 break;
         }
         in.nextLine();
         if (!menuP.equals("0")) {
             menuSelPersonal(sel);
         }
-        
-        
-    }
 
+    }
+    public static void menuAlterarPersonal(int sel) {
+        Scanner in = new Scanner(System.in);
+        String menuP;
+        System.out.println("Opção alternar personal");
+
+        System.out.println("Personal \"" + sel + "\" selecionado para alterações :" + Academia.personal.get(sel).getNome() + "\n Digite a opção desejada"
+                + "\n \t 0- MENU SELECIONAR PERSONAL "
+                + "\n \t 1- alterar nome:" + Academia.personal.get(sel).getNome()
+                + "\n \t 2- alterar CPF:" + Academia.personal.get(sel).getCPF()
+                + "\n \t 3- alterar CRT:" + Academia.personal.get(sel).getCrt()
+                + "\n \t 4- EXCLUIR PERSONAL");
+        System.out.println("Enter com a o"
+                + "pção desejada");
+        menuP = in.nextLine();
+        switch (menuP) {
+            case("0"):
+                menuSelPersonal(sel);
+                break;
+            case ("1"):
+                alterarAtributo(sel,"nome");
+
+                break;
+            case ("2"):
+                alterarAtributo(sel,"cpf");
+
+                break;
+            case ("3"):
+                alterarAtributo(sel,"crt");
+                break;
+            case ("4"):
+                System.out.print("Para confirmar EXCLUSÂO(não tem retorno),digite o indice:"+sel+"ou de enter para CANCELAR \n");
+                if(in.nextLine().equals(sel)){
+                    Academia.delPersonal(sel);
+                    System.out.print("EXCLUIDO COM SUSSESSO ");
+                    System.out.print("redirecionado para MENU INICIAL");
+                    menuPrincipal();
+                }
+                break;
+            default:
+                System.out.print("OPÇÂO INVALIDA");    
+                
+                
+        }
+        in.nextLine();
+        
+        if (!menuP.equals("0")) {
+            System.out.print("OPÇÂO INVALIDA");
+            menuAlterarPersonal(sel);
+        }
+
+    }
     public static void addPersonal() {
         if (Academia.getQuantidadePersonal() <= 5) {
 
@@ -111,6 +162,7 @@ public class Controlador {
                     + "\n SUGESTÃO: DELÇÃO");
         }
     }
+    
 
     public static String printListaPersonal() {
         if (Academia.getQuantidadePersonal() > 0) {
@@ -145,85 +197,52 @@ public class Controlador {
             System.out.println("\n Digite o indice correspondente do personal");
             sel = in.nextInt();
         }
-        if (sel<=Academia.getQuantidadePersonal()) {
+        if (sel <= Academia.getQuantidadePersonal()) {
             Controlador.menuSelPersonal(sel);
         } else {
-            System.out.print(" \""+sel + "\"3 não é uma opção valida");
-        
+            System.out.print(" \"" + sel + "\" não é uma opção valida");
+
         }
 
     }
-    public static void alterarPersonal(int sel){
+
+    public static void alterarAtributo(int sel, String atributo) {
         Scanner in = new Scanner(System.in);
-        String menuP; 
-        System.out.println("Opção alternar personal");
-        
-        System.out.println("Personal \""+sel+"\" selecionado para alterações :"+Academia.personal.get(sel).getNome()+"\n Digite a opção desejada"
-                + "\n \t 0- MENU SELECIONAR PERSONAL "
-                + "\n \t 1- alterar nome:"+Academia.personal.get(sel).getNome()
-                + "\n \t 2- alterar CPF:"+Academia.personal.get(sel).getCPF()
-                + "\n \t 3- alterar CRT:"+Academia.personal.get(sel).getCrt()
-                + "\n \t 4- EXCLUIR PERSONAL");
-         System.out.println("Enter com a o"
-                + "pção desejada");
-        menuP = in.nextLine();
-        switch (menuP) {
-
-            case ("1"):
-                System.out.println(Academia.personal.get(sel));
-
-                break;
-            case ("2"):
-                alterarPersonal(sel);
-
-                break;
-            case ("3"):
-                Controlador.selPersonal();
-                break;
-        }
-        in.nextLine();
-        if (!menuP.equals("0")) {
-            menuSelPersonal(sel);
-        }
-
-    }
-    public  void alterarAtributo(int sel,String atributo){
-        Scanner in = new Scanner(System.in);
-        String input; 
-        String valor="";
+        String input;
+        String valor = "";
         switch (atributo) {
 
             case ("nome"):
-                valor=Academia.personal.get(sel).getNome();
+                valor = Academia.personal.get(sel).getNome();
 
                 break;
             case ("cpf"):
-                valor=String.valueOf(Academia.personal.get(sel).getCPF());
+                valor = String.valueOf(Academia.personal.get(sel).getCPF());
 
                 break;
             case ("crt"):
-                valor=String.valueOf(Academia.personal.get(sel).getCrt());
+                valor = String.valueOf(Academia.personal.get(sel).getCrt());
                 break;
         }
-        
-        System.out.println("Altarando atributo"+atributo+":"+valor+" digite o novo"+atributo);
-        input=in.nextLine();
-        System.out.print("para confirmar as alterações, digite o"+atributo+" antigo:"+valor);
-        if(in.nextLine()==valor){
+
+        System.out.println("Altarando atributo" + atributo + ":" + valor + " digite o novo" + atributo);
+        input = in.nextLine();
+        System.out.print("para confirmar as alterações, digite o" + atributo + " antigo:" + valor+"\n");
+        if (in.nextLine().equals(valor)) {
             switch (atributo) {
 
-            case ("nome"):
-                Academia.personal.get(sel).setNome(input);
+                case ("nome"):
+                    Academia.personal.get(sel).setNome(input);
 
-                break;
-            case ("cpf"):
-                Academia.personal.get(sel).setCPF(Integer.parseInt(input));
+                    break;
+                case ("cpf"):
+                    Academia.personal.get(sel).setCPF(Integer.parseInt(input));
 
-                break;
-            case ("crt"):
-                Academia.personal.get(sel).setCrt(Integer.parseInt(input));
-                break;
-        }
+                    break;
+                case ("crt"):
+                    Academia.personal.get(sel).setCrt(Integer.parseInt(input));
+                    break;
+            }
         }
     }
-}  
+}

@@ -32,7 +32,7 @@ public class Personal {
         this.cod = Academia.getQuantidadePersonal();
 
     }
-    
+
     public int getQuantidadeCompromisso() {
         return quantidadeCompromisso;
     }
@@ -86,6 +86,32 @@ public class Personal {
 
     public void setCrt(int crt) {
         this.crt = crt;
+    }
+
+    public void addCompromisso() {
+        if (this.getQuantidadeCompromisso() <= 5) {
+
+            System.out.println("Opção adicionar personal selecionada");
+            Scanner in = new Scanner(System.in);
+            
+            System.out.println("digite a data ");
+            int data = in.nextInt();
+            if (this.Disponibilidade(data)) {
+                System.out.println("digite o nome do aluno");
+                String nome = in.nextLine();
+
+                
+
+                Personal personal = new Personal(nome, crt);
+                Academia.setPersonal(personal);
+
+                Academia.setQuantidadePersonal(Academia.getQuantidadePersonal() + 1);
+                System.out.println("Personal:" + nome + " ADICIONADO COM SUSSESSO");
+            }
+        } else {
+            System.out.println("Não ha espaço para adição de personal"
+                    + "\n SUGESTÃO: DELÇÃO");
+        }
     }
 
     public Compromisso getCompromisso(int indice) {

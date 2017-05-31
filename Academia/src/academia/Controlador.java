@@ -101,7 +101,8 @@ public class Controlador {
                 + "\n \t 1- alterar nome:" + Academia.personal.get(sel).getNome()
                 + "\n \t 2- alterar CPF:" + Academia.personal.get(sel).getCPF()
                 + "\n \t 3- alterar CRT:" + Academia.personal.get(sel).getCrt()
-                + "\n \t 4- EXCLUIR PERSONAL");
+                + "\n \t 4- EXCLUIR PERSONAL"
+                + "\n \t 5- SAIR");
         System.out.println("Enter com a o"
                 + "pção desejada");
         menuP = in.nextLine();
@@ -128,6 +129,8 @@ public class Controlador {
                     System.out.print("redirecionado para MENU INICIAL");
                     menuPrincipal();
                 }
+                break;
+            case ("5"):
                 break;
             default:
                 System.out.print("OPÇÂO INVALIDA");    

@@ -16,6 +16,7 @@ public class Controlador {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) {
         Controlador.menuPrincipal();
 
@@ -80,6 +81,7 @@ public class Controlador {
                 Academia.personal.get(sel).printCompromisso();
                 break;
             case ("4"):
+                Academia.personal.get(sel).addCompromisso();
                 break;
         }
         in.nextLine();
@@ -140,11 +142,29 @@ public class Controlador {
 
     }
     public static void addPersonal() {
-        AdicionarPersonais tabela = new AdicionarPersonais();
-        tabela.setVisible(true);
-        
-        
-        
+        //AdicionarPersonais tabela = new AdicionarPersonais();
+        //tabela.setVisible(true);
+        if (Academia.getQuantidadePersonal() <= 5) {
+
+            System.out.println("Opção adicionar personal selecionada");
+            Scanner in = new Scanner(System.in);
+
+            System.out.println("digite o nome do pesonal");
+            String nome = in.nextLine();
+
+            System.out.println("digite o numero do crt");
+            int crt = in.nextInt();
+
+            Personal personal = new Personal(nome, crt);
+            Academia.setPersonal(personal);
+
+            Academia.setQuantidadePersonal(Academia.getQuantidadePersonal() + 1);
+            System.out.println("Personal:" + nome + " ADICIONADO COM SUSSESSO");
+
+        } else {
+            System.out.println("Não ha espaço para adição de personal"
+                    + "\n SUGESTÃO: DELÇÃO");
+        }
     }
     
 

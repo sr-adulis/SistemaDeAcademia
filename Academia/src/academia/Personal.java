@@ -86,11 +86,11 @@ public class Personal {
     public void addCompromisso() {
         if (this.getQuantidadeCompromisso() <= 5) {
 
-            System.out.println("Opção adicionar personal selecionada");
+            System.out.println("Opção adicionar compromisso ao personal "+this.getNome());
             Scanner in = new Scanner(System.in);
             
-            System.out.println("digite a data ");
-            int data = in.nextInt();
+            System.out.println("digite a data que deseja adicionar o compromisso");
+            String data = in.nextLine();
             if (this.Disponibilidade(data)) {
                 System.out.println("digite o nome do aluno");
                 String nome = in.nextLine();
@@ -153,7 +153,9 @@ public class Personal {
         return resultado;
     }
 
-    public boolean Disponibilidade(Date data) {
+    public boolean Disponibilidade(String data) {
+        //converção de string para data
+        
         int i = 0;
 
         while (this.getQuantidadeCompromisso() - 1 <= i) {
@@ -188,7 +190,5 @@ public class Personal {
         return ver;
     }
 
-    private boolean Disponibilidade(int data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 }

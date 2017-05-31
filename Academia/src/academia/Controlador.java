@@ -78,7 +78,7 @@ public class Controlador {
 
                 break;
             case ("3"):
-                Academia.personal.get(sel).printCompromisso();
+                System.out.println(Academia.personal.get(sel).printCompromisso());
                 break;
             case ("4"):
                 Academia.personal.get(sel).addCompromisso();

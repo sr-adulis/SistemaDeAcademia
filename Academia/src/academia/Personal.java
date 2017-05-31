@@ -142,6 +142,9 @@ public class Personal {
 
     public String printCompromisso() {
         int i = 0;
+        if (this.quantidadeCompromisso==0){
+        return "O personal  "+this.getNome()+"não tem compromissos";
+        }
         String resultado = "Nº compromisso: " + i + "Tipo: " + this.compromisso[i].getTipo() + "objetivo"
                 + this.compromisso[i].getObjetivo() + "\n \t Nome do aluno:" + this.compromisso[i].getAluno()
                 + "Data:" + this.compromisso[i].getData() + " Status:" + this.compromisso[i].getStatus() + "\t \t";
@@ -149,6 +152,7 @@ public class Personal {
         if (this.getQuantidadeCompromisso() > i) {
             return resultado + printCompromisso(i);
         }
+        
         return resultado;
     }
 

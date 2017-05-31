@@ -92,16 +92,21 @@ public class Personal {
             System.out.println("digite a data que deseja adicionar o compromisso");
             String data = in.nextLine();
             if (this.Disponibilidade(data)) {
+                 System.out.println("informe o objetivo do seu treino ex: ganho de massa, perda de gordura, etc..)");
+                String objetivo = in.nextLine();
+                
+                System.out.println("informe o tipo de treino desejado ex: airóbicos, musculação, etc...");
+                String tipo = in.nextLine();
+                
                 System.out.println("digite o nome do aluno(PARA CANCELAR DE ENTER sem digitar)");
                 String nome = in.nextLine();
 
                 
                 if (!nome.equals("")){
-                Personal personal = new Personal(nome, crt);
-                Academia.setPersonal(personal);
+                this.MarcarCompromisso(nome, data, tipo, objetivo);
 
-                Academia.setQuantidadePersonal(Academia.getQuantidadePersonal() + 1);
-                System.out.println("Personal:" + nome + " ADICIONADO COM SUSSESSO");
+                this.setQuantidadeCompromisso(this.getQuantidadeCompromisso() + 1);
+                System.out.println("compromisso com" + nome + " ADICIONADO COM SUSSESSO");
                 
                 }
                 else{
@@ -122,7 +127,7 @@ public class Personal {
         this.compromisso[this.getQuantidadeCompromisso()] = compromisso;
     }
 
-    public boolean MarcarCompromisso(String aluno, String data, String objetivo, String tipo, int codPersonal) {
+    public boolean MarcarCompromisso(String aluno, String data, String objetivo, String tipo) {
         Compromisso compromisso = new Compromisso(aluno, data, objetivo, tipo, this.getQuantidadeCompromisso());
         this.setCompromisso(compromisso);
         return true;
@@ -159,16 +164,15 @@ public class Personal {
     }
 
     public boolean Disponibilidade(String data) {
-        //converção de string para 
-        
-        
+       
         int i = 0;
 
-        while (this.getQuantidadeCompromisso() - 1 <= i) {
-
-            if ((this.compromisso[i].getData().equals(data)) && (this.compromisso[i].status == Compromisso.Status.agendado
-                    || this.compromisso[i].status == Compromisso.Status.confirmado)) {
+        while (4>= i) {
+            if(this.compromisso[i]!=null){
+            if ((this.compromisso[i].getData().equals(data)) && (this.compromisso[i].status.equals(Compromisso.Status.agendado)
+                    || this.compromisso[i].status.equals(Compromisso.Status.confirmado))) {
                 return false;
+            }
             }
             i++;
         }

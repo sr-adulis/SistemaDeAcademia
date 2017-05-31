@@ -16,7 +16,7 @@ public class Compromisso {
     
     private String aluno;
     private int cod;
-    private Date data;
+    private String data;
     private String objetivo;
     private String tipo;
     
@@ -26,7 +26,7 @@ public class Compromisso {
     };
     Status status;
 
-    public Compromisso(String aluno,Date data, String objetivo, String tipo,int cod) {
+    public Compromisso(String aluno,String data, String objetivo, String tipo,int cod) {
         
         this.aluno=aluno;
         this.data = data;
@@ -65,11 +65,11 @@ public class Compromisso {
     }
 
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 

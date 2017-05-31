@@ -82,6 +82,7 @@ public class Controlador {
                 break;
             case ("4"):
                 Academia.personal.get(sel).addCompromisso();
+             
                 break;
         }
         in.nextLine();

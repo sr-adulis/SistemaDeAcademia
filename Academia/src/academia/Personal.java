@@ -92,16 +92,21 @@ public class Personal {
             System.out.println("digite a data que deseja adicionar o compromisso");
             String data = in.nextLine();
             if (this.Disponibilidade(data)) {
-                System.out.println("digite o nome do aluno");
+                System.out.println("digite o nome do aluno(PARA CANCELAR DE ENTER sem digitar)");
                 String nome = in.nextLine();
 
                 
-
+                if (!nome.equals("")){
                 Personal personal = new Personal(nome, crt);
                 Academia.setPersonal(personal);
 
                 Academia.setQuantidadePersonal(Academia.getQuantidadePersonal() + 1);
                 System.out.println("Personal:" + nome + " ADICIONADO COM SUSSESSO");
+                
+                }
+                else{
+                    System.out.println("AGENDAMENTO CALCELADO");
+                }
             }
         } else {
             System.out.println("Não ha espaço para adição de personal"
@@ -117,7 +122,7 @@ public class Personal {
         this.compromisso[this.getQuantidadeCompromisso()] = compromisso;
     }
 
-    public boolean MarcarCompromisso(String aluno, Date data, String objetivo, String tipo, int codPersonal) {
+    public boolean MarcarCompromisso(String aluno, String data, String objetivo, String tipo, int codPersonal) {
         Compromisso compromisso = new Compromisso(aluno, data, objetivo, tipo, this.getQuantidadeCompromisso());
         this.setCompromisso(compromisso);
         return true;
@@ -154,13 +159,14 @@ public class Personal {
     }
 
     public boolean Disponibilidade(String data) {
-        //converção de string para data
+        //converção de string para 
+        
         
         int i = 0;
 
         while (this.getQuantidadeCompromisso() - 1 <= i) {
 
-            if ((this.compromisso[i].getData() == data) && (this.compromisso[i].status == Compromisso.Status.agendado
+            if ((this.compromisso[i].getData().equals(data)) && (this.compromisso[i].status == Compromisso.Status.agendado
                     || this.compromisso[i].status == Compromisso.Status.confirmado)) {
                 return false;
             }
@@ -169,7 +175,7 @@ public class Personal {
         return true;
     }
 
-    public static boolean[] Disponibilidadess(Date data, Personal[] personal) {
+    public static boolean[] Disponibilidadess(String data, Personal[] personal) {
 
         int j = 0;
         boolean ver[] = new boolean[Academia.getQuantidadePersonal()];
@@ -178,7 +184,7 @@ public class Personal {
             ver[j] = true;
 
             while (personal[j].getQuantidadeCompromisso() >= i) {
-                if ((personal[j].compromisso[i].getData() == data) && (personal[j].compromisso[i].status == Compromisso.Status.agendado
+                if ((personal[j].compromisso[i].getData().equals(data)) && (personal[j].compromisso[i].status == Compromisso.Status.agendado
                         || personal[j].compromisso[i].status == Compromisso.Status.confirmado)) {
                     ver[j] = false;
                 }
